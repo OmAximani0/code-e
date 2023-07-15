@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node -r dotenv/config index.mjs",
-    "dev": "nodemon -r dotenv/config index.mjs"
+    "dev": "nodemon -r dotenv/config index.mjs",
+    "cluster": "node -r dotenv/config cluster.mjs"
   },
   "repository": {
     "type": "git",
