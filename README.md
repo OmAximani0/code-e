@@ -4,6 +4,11 @@ Online code runner
 > Currently supports only python
 
 ### Docker command
+- Build docker image
+```bash
+docker build -t code-e .
+```
+- Run docker container
 ```bash
 docker run --rm -d \
 -e MONGO_URI="<Your mongo URI>" \
