@@ -11,9 +11,10 @@ connect_db();
 // Middlewares
 app.use(express.json());
 
-import { UserRoute } from "./routes/index.mjs";
+import { UserRoute, SubmissionRoute } from "./routes/index.mjs";
 
 app.use("/users", UserRoute);
+app.use("/submissions", SubmissionRoute);
 
 app.get("/", (_, res) => {
     res.send("Hello World!");

@@ -73,7 +73,7 @@ userRoute.post("/signin", async (req, res) => {
 
             // check if user is signup
             let user = await User.findOne({ email }).exec();
-            console.log(user)
+
             if (!user) {
                 response["message"] = "Email not signed up! Signup first";
                 return res.status(400).json(response);

@@ -11,13 +11,13 @@ export function verifyJWT(token) {
     } catch (error) {
         switch (error.name) {
             case "TokenExpiredError":
-                return Error("Token expired! Sign in again!");
+                throw Error("Token expired! Sign in again!");
             case "JsonWebTokenError":
-                return Error("Invaild token! Authnetication Failed!")
+                throw Error("Invaild token! Authnetication Failed!")
             case "NotBeforeError":
-                return Error("Inactive token!")
+                throw Error("Inactive token!")
             default:
-                return Error("Unknown Error!");
+                throw Error("Unknown Error!");
         }
     }
 }
