@@ -1,7 +1,7 @@
 # Code-E
 Online code runner
 
-> Currently supports only python
+> **Warning** : Import the [init.json](./mongo-seed/init.json) to language collection of your mongo database (no need to import if using `docker compose`)
 
 ### Docker command
 - Build docker image

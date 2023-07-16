@@ -9,14 +9,20 @@ services:
       - 27017
     environment:
       MONGO_INITDB_DATABASE: main
+
+  mongo-seed:
+    build: ./mongo-seed
+    depends_on:
+      - mongo
     
-  flask:
+  server:
+    build: ./
     image: code-e
     restart: always
     ports:
       - 5000:5000
     environment:
-      - MONGO_URI=mongodb://mongo/crud
+      - MONGO_URI=mongodb://mongo/main
       - JWT_SECRET=5706660114945eebe9d1833418e05698f9f79951
 
       # Add path according to container
