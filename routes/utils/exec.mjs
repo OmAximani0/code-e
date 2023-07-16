@@ -10,13 +10,13 @@ export default async function runProgram(
     submissionDoc
 ) {
     let codesDir = path.join(process.cwd(), "codes");
-    const filePath = path.join(codesDir, subId + "." + language);
+    const filePath = path.join(codesDir, subId + "." + language.ext);
     try {
         _createDir(codesDir);
         _createFile(srcCode, filePath);
 
         // run the program according to the language & return the output or error
-        switch (language) {
+        switch (language.ext) {
             case "py":
                 try {
                     const pyOut = await _runCode(

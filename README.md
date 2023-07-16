@@ -22,5 +22,6 @@ code-e
 | ------------- | ------------- | ------------- | ------------- |
 | `POST` | `/users/signup` | ```{ 'email', 'password' }``` | Creates a new user |
 | `POST` | `/users/signin` | - | login with existing user |
-| `POST` | `/submissions` | ```{ 'language', 'srcCode' }``` | Create a submission |
+| `POST` | `/submissions` | ```{ 'languageId', 'srcCode' }``` | Create a submission |
 | `POST` | `/submissions/<id>` | - | Get submission information according to `id` |
+| `GET` | `/languages` | - | Get all available language information |

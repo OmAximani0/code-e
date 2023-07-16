@@ -12,9 +12,8 @@ const submissionSchema = Schema({
         required: true,
     },
     language: {
-        type: SchemaTypes.String,
+        type: SchemaTypes.Mixed,
         require: true,
-        enum: ["py"],
     },
     submitedAt: {
         type: SchemaTypes.Date,

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { isAuthneticated } from "../middleware/authentication.mjs";
-import { Submission } from "../models/index.mjs";
+import { Submission, Language } from "../models/index.mjs";
 import runProgram from "./utils/exec.mjs";
 import { Types } from "mongoose";
 
@@ -11,14 +11,21 @@ submissionRoute.post("/", isAuthneticated, async (req, res) => {
     const data = req.body;
 
     if (data) {
-        const { language, srcCode } = data;
+        const { languageId, srcCode } = data;
         // check both fields exist
-        if (language && srcCode) {
+        if (languageId && srcCode) {
+            const language = await Language.findOne({ id: languageId }).select('-_id').exec();
+
+            if (!language) {
+                response["message"] = "Invalid lanuage id";
+                return res.status(400).json(response);
+            }
+
             // create a new submission in db
             const newSub = new Submission({
                 user: req.user._id,
                 status: "pending",
-                language: req.body.language,
+                language: language,
                 submitedAt: new Date(),
             });
 
@@ -47,10 +54,10 @@ submissionRoute.post("/", isAuthneticated, async (req, res) => {
                 await newSub.save();
                 return;
             }
-        } else if (!language && !srcCode) {
+        } else if (!languageId && !srcCode) {
             response["message"] = "Lagunage and Source code not provided!";
             return res.status(400).json(response);
-        } else if (!language) {
+        } else if (!languageId) {
             response["message"] = "Lagunage not provided!";
             return res.status(400).json(response);
         }

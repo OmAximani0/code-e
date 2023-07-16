@@ -1,4 +1,4 @@
-import { Router, response } from "express";
+import { Router } from "express";
 import { User } from "../models/index.mjs";
 import { compare } from "bcrypt";
 import { createJWT } from "../utils/jwt.mjs";
